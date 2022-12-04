@@ -13,11 +13,11 @@
           </div>
     </form>
 
-    <h4 class="mt-5 text-white">Data Pembeli</h4>
+    <h4 class="mt-5 text-white">Data pembelian</h4>
 
 
 
-    <a href="{{ route('admin.create') }}" type="button" class="btn btn-success rounded-3">Tambah Data</a>
+    <a href="{{ route('pembelian.create') }}" type="button" class="btn btn-success rounded-3">Tambah Data</a>
 
     @if($message = Session::get('success'))
     <div class="alert alert-success mt-3" role="alert">
@@ -31,39 +31,43 @@
         <thead>
             <tr>
                 <th>No.</th>
-                <th>Nama</th>
-                <th>Alamat</th>
-                <th>Username</th>
+                <th>jumlah</th>
+                <th>tahun</th>
+                <th>id_pembeli</th>
+                <th>nama</th>
+                <th>alamat</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($datas as $data)
             <tr>
+                <td>{{ $data->id_pembelian }}</td>
+                <td>{{ $data->jumlah }}</td>
+                <td>{{ $data->tahun }}</td>
                 <td>{{ $data->id_pembeli }}</td>
                 <td>{{ $data->nama }}</td>
                 <td>{{ $data->alamat }}</td>
-                <td>{{ $data->username }}</td>
                 <td>
-                    <a href="{{ route('admin.edit', $data->id_pembeli) }}" type="button" class="btn btn-warning rounded-3">Ubah</a>
+                    <a href="{{ route('pembelian.edit', $data->id_pembelian) }}" type="button" class="btn btn-warning rounded-3">Ubah</a>
 
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#hapusModal{{ $data->id_pembeli }}">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#hapusModal{{ $data->id_pembelian }}">
                         Hapus
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="hapusModal{{ $data->id_pembeli }}" tabindex="-1" aria-labelledby="hapusModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="hapusModal{{ $data->id_pembelian }}" tabindex="-1" aria-labelledby="hapusModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="hapusModalLabel">Konfirmasi</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <form method="POST" action="{{ route('admin.delete', $data->id_pembeli) }}">
+                                <form method="POST" action="{{ route('pembelian.delete', $data->id_pembelian) }}">
                                     @csrf
                                     <div class="modal-body">
-                                        Apakah anda yakin ingin menghapus {{ $data->username }}?
+                                        Apakah anda yakin ingin menghapus ?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
