@@ -17,7 +17,7 @@
     <div class="card mt-4 bg-primary">
         <div class="card-body">
 
-            <h5 class="card-title fw-bolder mb-3 fs-5 text-warning">Tambah motor</h5>
+            <h5 class="card-title fw-bolder mb-3 fs-5 text-warning">Tambah motor Mahal</h5>
 
             <form method="post" action="{{ route('motor.store') }}">
                 @csrf
